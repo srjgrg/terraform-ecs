@@ -1,13 +1,15 @@
+/*
 data "aws_ecs_task_definition" "default" {
   task_definition = "${aws_ecs_task_definition.default.family}"
-}
+} */
+
 resource "aws_ecs_task_definition" "default" {
     family                = "nginx"
     container_definitions = <<DEFINITION
 [
   {
     "name": "nginx",
-    "image": "ganez/helloapp-nginx:v1",
+    "image": "suraj/helloapp-nginx:v1",
     "essential": true,
     "portMappings": [
       {
@@ -17,7 +19,7 @@ resource "aws_ecs_task_definition" "default" {
     ],
     "memory": 512,
     "cpu": 1024
-  },
+  }
 ]
 DEFINITION
 }
